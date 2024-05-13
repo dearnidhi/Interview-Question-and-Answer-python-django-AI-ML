@@ -1,0 +1,751 @@
+Q1. Difference Between List and Tuple 
+
+Lists and tuples are both sequences in Python, but the main difference
+lies in their mutability. Lists are mutable, meaning you can change their elements,
+add new elements, or remove existing ones. Tuples, on the other hand, are immutable,
+meaning once they are created, their elements cannot be changed. Tuples are often used
+for data that should not be changed, while lists are used for data that can be modified.
+
+Q2. What is Decorator? Explain it with example. 
+
+A decorator is a design pattern in Python that allows you to modify or
+extend the behavior of functions or methods without changing their actual code.
+Decorators are implemented as functions themselves, and they take another function
+as input and return a new function that usually extends the behavior of the input function.
+Here's a simple example:
+
+def decorator(func):
+    def wrapper():
+        print("Before calling the function")
+        func()
+        print("After calling the function")
+    return wrapper
+
+@decorator
+def greet():
+    print("Hello!")
+
+greet()
+
+Q3. Difference Between List Comprehension and Dict Comprehension (06:41)
+
+List comprehensions and dictionary comprehensions are both 
+concise ways to create lists and dictionaries, 
+respectively, in Python. The main difference is in their
+ syntax and the type of object they produce. List comprehensions produce lists,
+ while dictionary comprehensions produce dictionaries. Here's an example of each:
+
+ # List comprehension
+my_list = [x for x in range(10)]
+
+# Dictionary comprehension
+my_dict = {x: x**2 for x in range(10)}
+
+
+Q4.How is Memory Managed In Python? (08:12)
+
+Python uses automatic memory management through a 
+mechanism known as garbage collection. Python's built-in garbage collector 
+periodically identifies and deletes objects that are no longer referenced or needed by the program. Additionally, Python uses reference counting to keep track of the number of references to each object,
+allowing memory to be deallocated when an object's reference count drops to zero.
+
+
+Q5.Difference Between Generators and Iterators:
+
+A generator is a special type of function that returns an iterable sequence of items, 
+one at a time, using the yield keyword. It generates values on-the-fly, saving memory.
+Generators are defined using the def keyword, just like regular functions.
+
+def square_generator(n):
+    for i in range(n):
+        yield i**2
+
+squares = square_generator(5)
+print(next(squares))  # Output: 0
+print(next(squares))  # Output: 1
+
+
+An iterator is an object that can be iterated upon, 
+meaning it can be used in a loop to access its elements one at a time.
+Iterators must implement the __iter__() and __next__() methods. Many built-in Python types,
+ such as lists and tuples, are iterators.
+
+my_list = [1, 2, 3]
+my_iterator = iter(my_list)
+print(next(my_iterator))  # Output: 1
+print(next(my_iterator))  # Output: 2
+
+
+Q6.'init' Keyword in Python:
+The __init__ method is a special method in Python classes that is called when an 
+object of the class is created. It is used to initialize the attributes of the object.
+The __init__ method is defined within the class and takes at least one argument, self,
+ which refers to the instance being created. You can also define additional arguments to pass
+values during object creation.
+
+class MyClass:
+    def __init__(self, value):
+        self.value = value
+
+my_object = MyClass(10)
+print(my_object.value)  # Output: 10
+
+
+Q7.Difference Between Modules and Packages in Python:
+
+A module is a Python file that contains a set of related functions, classes, and variables.
+It is a way to organize code into separate files for better readability and reusability. 
+Modules can be imported into other Python scripts using the import statement.
+
+# my_module.py
+PI = 3.14
+
+def greet(name):
+    print(f"Hello, {name}!")
+
+
+A package is a collection of modules. It is a way to organize related modules into a hierarchical structure. 
+Packages are typically directories that contain an __init__.py file, 
+which makes Python treat the directory as a package.    
+
+mypackage/
+    __init__.py
+    submodule1.py
+    submodule2.py
+
+
+
+Q8.Difference Between Range and Xrange:
+Note: xrange has been removed in Python 3 and has been replaced by the range function, which now behaves like xrange in Python 2.
+
+In Python 2:
+
+range returned a list of numbers, which could be memory-intensive for large ranges.
+xrange returned an xrange object, which generated numbers on-the-fly and saved memory.  
+
+# Python 2
+range(10)  # Returns a list of numbers from 0 to 9
+xrange(10)  # Returns an xrange object that generates numbers from 0 to 9
+
+
+Q9.Generators Explanation with Example:
+
+A generator is a special type of function that returns an iterable sequence of items,
+one at a time, using the yield keyword. It allows you to generate values on-the-fly, 
+saving memory compared to creating a list of all values at once.
+
+ def square_generator(n):
+    for i in range(n):
+        yield i**2
+
+squares = square_generator(5)
+print(next(squares))  # Output: 0
+print(next(squares))  # Output: 1
+
+
+Q 10. Mutable and Immutable Data Types in Python?
+
+Python has two categories of built-in data types: mutable and immutable.
+
+Immutable data types: 
+These data types cannot be changed after creation. Examples include numbers, strings, and tuples. 
+When you try to modify an immutable object, a new object is created with the modified value.
+
+Mutable data types: 
+These data types can be modified after creation. 
+Examples include lists, dictionaries, and sets. You can add,
+remove, or change elements of mutable objects directly.
+
+my_list = [1, 2, 3]
+my_list.append(4)
+print(my_list)  # Output: [1, 2, 3, 4]
+
+Q11.What are inbuild data types available in Python -OR Explain Mutable and Immutable data Types
+
+Built-in Data Types in Python:
+Python comes with several built-in data types that are fundamental to the language. Here's a brief overview:
+
+Numeric Types:
+int: Integer numbers without decimal points.
+float: Floating-point numbers with decimal points.
+complex: Complex numbers with real and imaginary parts.
+
+Sequence Types:
+str: Strings, which are sequences of characters.
+list: Lists, which are ordered collections of items.
+tuple: Tuples, which are ordered, immutable collections of items.
+
+Mapping Types:
+dict: Dictionaries, which are unordered collections of key-value pairs.
+Set Types:
+set: Unordered collections of unique elements.
+frozenset: Immutable versions of sets.
+Boolean Type:
+bool: Boolean values, which can be either True or False.
+None Type:
+None: Represents the absence of a value or a null value.
+
+Mutable Data Types:
+Mutable data types are those whose values can be changed after creation.
+Examples include lists, dictionaries, and sets.
+When you modify a mutable object, you are changing its contents in place.
+
+my_list = [1, 2, 3]
+my_list[0] = 10
+print(my_list)  # Output: [10, 2, 3]
+
+Immutable Data Types:
+Immutable data types are those whose values cannot be changed after creation.
+Examples include integers, floats, strings, and tuples.
+When you attempt to modify an immutable object, Python creates a new object instead of modifying the existing one.
+
+my_tuple = (1, 2, 3)
+# Attempting to modify an immutable object raises an error
+my_tuple[0] = 10  # This will raise a TypeError
+
+
+Q12. Explain Ternary Operator in Python? 
+
+The ternary operator, also known as the conditional expression, 
+provides a concise way to write conditional statements in Python. 
+
+Its syntax is:
+x = true_value if condition else false_value
+
+If the condition is true, x is assigned the value of true_value; otherwise, it is assigned the value of false_value.
+
+age = 20
+message = "Teenager" if age < 20 else "Adult"
+print(message)  # Output: Adult
+
+
+Q13. What is Inheritance In Python? 
+Inheritance is a key feature of object-oriented programming in 
+Python that allows a class (called a subclass or derived class) to inherit attributes 
+and methods from another class (called a superclass or base class).
+The subclass can then extend or override the functionality of the superclass.
+
+class Animal:
+    def __init__(self, name):
+        self.name = name
+
+    def eat(self):
+        print(f"{self.name} is eating.")
+
+class Dog(Animal):
+    def bark(self):
+        print(f"{self.name} is barking.")
+
+my_dog = Dog("Buddy")
+my_dog.eat()  # Output: Buddy is eating.
+my_dog.bark()  # Output: Buddy is barking.
+
+In this example, the Dog class inherits from the Animal class. 
+It inherits the name attribute and the eat() method. Additionally,
+it defines its own method, bark().
+
+
+14. Difference Between Local Variable and Global Variable in Python 
+
+Local Variable: 
+A local variable is a variable that is defined inside a function or a block 
+(such as a loop or conditional statement).
+It can only be accessed within the scope of that function or block. Local variables are 
+created when the function is called and destroyed 
+when the function returns.
+
+def my_function():
+    local_var = 10
+    print(local_var)
+
+local_var = 20  # This is a global variable
+my_function()  # Output: 10
+print(local_var)  # Output: 20
+
+Global Variable:
+A global variable is a variable that is defined outside of any function, 
+usually at the module level. It can be accessed and modified from anywhere in the script.
+Global variables are available throughout the script's execution.
+
+global_var = 10
+def my_function():
+    print(global_var)
+
+my_function()  # Output: 10
+global_var = 20
+my_function()  # Output: 20
+
+Q15. Explain Break, Continue and Pass Statement?
+
+Break Statement: 
+The break statement is used to terminate the execution of a loop (for or while) 
+or to exit from a nested block of code, such as a switch or a try-except block.
+
+for i in range(5):
+    if i == 3:
+        break
+    print(i)
+# Output: 0 1 2
+
+Continue Statement: 
+The continue statement is used to skip the rest of the current iteration of a loop 
+and move on to the next iteration.
+
+for i in range(5):
+    if i % 2 == 0:
+        continue
+    print(i)
+# Output: 1 3
+
+Pass Statement: 
+The pass statement is a placeholder that does nothing.
+It is often used as a placeholder when a statement is syntactically
+required but you don't want any code to be executed.
+
+def my_function():
+    pass  # Placeholder for future code
+
+
+Q16.What is 'self' keyword in python? 
+
+self is a convention in Python used to refer to the instance of the class within the class itself.
+It is the first parameter of instance methods in Python classes and is used to access instance variables
+and methods within the class.
+
+class MyClass:
+    def __init__(self, value):
+        self.value = value
+
+    def display(self):
+        print(self.value)
+
+my_object = MyClass(10)
+my_object.display()  # Output: 10
+
+
+17. Difference Between Pickling and Unpickling? 
+
+Pickling is the process of serializing Python objects into a byte stream.
+
+import pickle
+
+my_list = [1, 2, 3]
+pickle_file = open("my_list.pkl", "wb")
+pickle.dump(my_list, pickle_file)
+pickle_file.close()
+
+Unpickling is the process of deserializing a byte stream back into Python objects.
+
+unpickle_file = open("my_list.pkl", "rb")
+loaded_list = pickle.load(unpickle_file)
+unpickle_file.close()
+print(loaded_list)  # Output: [1, 2, 3]
+
+18. Explain Function of List, Set, Tuple or Dictionary? 
+
+List: 
+A list is an ordered collection of elements, which can be of different data types. It supports indexing, slicing, and various methods for adding, removing, and manipulating elements.
+
+my_list = [1, 2, 3]
+my_list.append(4)
+print(my_list)  # Output: [1, 2, 3, 4]
+
+Set: 
+A set is an unordered collection of unique elements. It supports mathematical set operations like union, intersection, and difference. Sets do not allow duplicate elements.
+my_set = {1, 2, 3, 2, 1}
+print(my_set)  # Output: {1, 2, 3}
+
+Tuple: 
+A tuple is an ordered collection of elements, similar to a list, but it is immutable, meaning its elements cannot be changed once the tuple is created.
+my_tuple = (1, 'hello', True)
+print(my_tuple)  # Output: (1, 'hello', True)
+
+Dictionary: 
+A dictionary is an unordered collection of key-value pairs.
+It provides constant-time lookup, addition, and deletion of key-value pairs.
+
+
+19. What are Python Iterators? 
+
+Iterators are objects in Python that represent a stream of data.
+They implement the iterator protocol, which includes the __iter__() and __next__() methods.
+Iterators are used to iterate over sequences like lists, tuples, and dictionaries.
+
+my_list = [1, 2, 3]
+my_iterator = iter(my_list)
+print(next(my_iterator))  # Output: 1
+print(next(my_iterator))  # Output: 2
+
+Q20. Explain type conversion in python. (int(), float(), ord(), oct(), str(), hex(), eval() etc.
+
+int(): Converts a value to an integer.
+float(): Converts a value to a floating-point number.
+ord(): Converts a character to its ASCII integer representation.
+oct(): Converts an integer to an octal string.
+str(): Converts a value to a string representation.
+hex(): Converts an integer to a hexadecimal string.
+eval(): Evaluates a string as a Python expression and returns the result.
+
+Q21. What does *args and kwargs mean? Explain 
+*args: *args is used to pass a variable number of non-keyworded arguments to a function.
+It allows you to pass zero or more arguments to a function as a tuple. Inside the function, 
+*args is treated as a tuple of passed arguments.
+
+def my_function(*args):
+    print(args)
+
+my_function(1, 'hello', True)  # Output: (1, 'hello', True)
+
+**kwargs: **kwargs is used to pass a variable number of keyworded arguments to a function.
+It allows you to pass zero or more keyword arguments to a function as a dictionary.
+ Inside the function, **kwargs is treated as a dictionary of passed keyword arguments.
+
+ def my_function(**kwargs):
+    print(kwargs)
+
+my_function(name='Alice', age=25)
+
+Q22.What is "Open" and "With" statement in Python?
+
+open() is a built-in function in Python used to open files in different modes (e.g., read, write, append).
+file = open("myfile.txt", "r")
+content = file.read()
+file.close()
+
+with statement is used to ensure that resources are properly
+managed by automatically closing the file after the block of code inside the with statement is executed.
+
+with open("myfile.txt", "r") as file:
+    content = file.read()
+
+Q23. Different ways to read and write in a file in Python? 
+
+Reading:
+open(): Open a file and return a file object.
+read(): Read the entire content of the file.
+readline(): Read a single line from the file.
+readlines(): Read all lines of the file and return a list of lines
+
+with open("myfile.txt", "r") as file:
+    content = file.read()
+    line = file.readline()
+    lines = file.readlines()
+
+
+Writing:
+open(): Open a file in write mode.
+write(): Write content to the file.
+writelines(): Write a list of lines to the file.
+
+with open("myfile.txt", "w") as file:
+    file.write("Hello, World!")
+    file.writelines(["Line 1\n", "Line 2\n"])
+
+Q24. What is Pythonpath? 
+
+PYTHONPATH is an environment variable in Python that tells the interpreter where
+to look for modules when importing them.
+It is a list of directory names that the Python interpreter searches for 
+modules when the import statement is used.
+
+Q25. How are exceptions handled in Python? 
+
+Exceptions are handled using try, except, else, and finally blocks.
+The try block contains the code that might raise an exception.
+The except block catches and handles the exception.
+The else block executes if no exception is raised.
+The finally block executes whether an exception occurs or not.
+
+try:
+    num = int(input("Enter a number: "))
+    result = 10 / num
+except ValueError:
+    print("Invalid input. Please enter a number.")
+except ZeroDivisionError:
+    print("Cannot divide by zero.")
+else:
+    print("Result:", result)
+finally:
+    print("Exception handling completed.")
+
+Q26.Difference Between Python 2.0 & Python 3.0 ?
+
+Python 3.0 introduced changes to the language syntax and standard library, making it incompatible with Python 2.x code.
+Python 3.0 has improved Unicode support, making it easier to work with international characters and text.
+In Python 3.0, the print statement was changed to a function, and string formatting was updated with new syntax.
+Python 3.0 removed some outdated or rarely used features, such as old-style classes and reduce() function.
+Python 3.0 introduced the nonlocal keyword and improved the handling of integer division and floating-point numbers.
+
+Q27 What is PIP in Python? (44:52)
+
+pip(Python Installation Package) is a package management system used to install and manage software packages written in Python.
+It is a command-line tool that interacts with the Python Package Index (PyPI) to download and install packages from the repository.
+
+# Install a package
+pip install package_name
+
+# Uninstall a package
+pip uninstall package_name
+
+# Install packages from a requirements file
+pip install -r requirements.txt
+
+Q28. Where is Python used? 
+
+Python is a versatile programming language used in various domains, including:
+Web development (e.g., Django, Flask)
+Data science and machine learning (e.g., NumPy, pandas, TensorFlow)
+Scripting and automation
+Desktop GUI applications (e.g., Tkinter)
+Scientific computing
+Game development
+Network programming
+Education
+    
+Q29.How to use F string and format or replacement operator in Python? (46:11)
+
+
+F-string:
+An F-string (formatted string literal) is a string that allows you to embed expressions inside curly braces {}.
+The expressions are evaluated and their values are inserted into the string. 
+F-strings provide a concise and readable way to format strings.
+
+name = "Alice"
+age = 25
+f"Hello, my name is {name} and I'm {age} years old."
+
+Format/Replacement Operator:
+The % operator is used for string formatting. It takes a format string on the left and values to be inserted on the right. 
+The values are substituted into the format string according to the format specifiers.
+
+name = "Alice"
+age = 25
+"Hello, my name is %s and I'm %d years old." % (name, age)
+
+Q30.How to get a list of all keys in a dictionary? 
+You can get a list of all keys in a dictionary using the keys() method.
+It returns a dictionary view object, which can be converted to a list using the list() function.
+
+my_dict = {'name': 'Alice', 'age': 25}
+keys_list = list(my_dict.keys())
+print(keys_list)  # Output: ['name', 'age']
+
+Q31. Difference Between Abstraction and Encapsulation. 
+
+Abstraction: Abstraction is the process of hiding complex implementation details and exposing only the essential 
+features and functionalities of an object or system. It allows users to interact with a simplified version 
+of the system, without needing to understand its internal workings.
+ Abstraction helps in managing complexity and providing a clear interface for interaction.
+
+Encapsulation: Encapsulation is the principle of bundling data (attributes) and methods
+ (functions) that operate on the data into a single unit, such as a class. 
+ It promotes the idea of keeping data and methods together, providing a way 
+ to hide the internal state of an object and control access to it. Encapsulation 
+ helps in achieving information hiding and maintaining the integrity of the object's data.
+
+Tricky Questions (32-41 Ques-Ans)
+
+Q32- Does Python support multiple inheritence. (Diamond Problem)
+Yes, Python supports multiple inheritance, which means a class can inherit attributes and methods from more than one base class. 
+However, it's important to note that multiple inheritance can lead to a problem known as the "diamond problem" 
+when two base classes inherit from a common ancestor.
+
+class A:
+    def show(self):
+        print("Class A")
+
+class B(A):
+    def show(self):
+        print("Class B")
+
+class C(A):
+    def show(self):
+        print("Class C")
+
+class D(B, C):
+    pass
+
+d = D()
+d.show()  # Which class's 'show' method should be called?
+Python resolves this ambiguity using a method resolution order (MRO), 
+which defines the order in which base classes are searched for methods. 
+In this case, the MRO would be D -> B -> A -> C -> A, and the show() method of class B would be called.
+
+Q33 - How to initialize empty List, Tuple, Dict or Set?
+
+Empty List: You can initialize an empty list using square brackets [].
+empty_list = []
+
+Empty Tuple: You can initialize an empty tuple using parentheses () or the tuple() function.
+empty_tuple = ()
+empty_tuple = tuple()
+
+Empty Dictionary: You can initialize an empty dictionary using curly braces {} or the dict() function.
+empty_dict = {}
+empty_dict = dict()
+
+Empty Set: You can initialize an empty set using curly braces {} or the set() function.
+empty_set = set()
+empty_set = {}  # This creates an empty dictionary, not an empty set
+
+Q34 - What are .py and .pyc files in Python
+.py files are Python source code files containing Python code.
+.pyc files are compiled bytecode files generated by Python when a .py file is imported or executed. They are used to speed up the loading of Python modules by caching the compiled code.
+
+Q35 - How slicing works in string manupulation. Explain [::-1]
+Slicing in Python allows you to extract a substring from a string or a sublist from a list.
+[::-1] is a slicing notation that reverses a string or list. The first colon : indicates that you want to select the entire sequence,
+the second colon : indicates the step size (which is -1 in this case, indicating reverse),
+and the third colon : indicates the direction (from the end to the start).
+
+my_string = "Python"
+print(my_string[1:4])  # Output: yth
+
+my_string = "Python"
+print(my_string[::-1])  # Output: nohtyP
+
+Q36- Can you concatenate two tuples? How is it even possible to concatenate two tuples, since they are immutable?
+
+In Python, tuples are immutable, which means you cannot directly modify their elements.
+However, you can concatenate (combine) two tuples to create a new tuple. There are a few ways to concatenate tuples:
+Using the + operator: You can use the + operator to concatenate two tuples.
+
+tuple1 = (1, 2, 3)
+tuple2 = ('a', 'b', 'c')
+concatenated_tuple = tuple1 + tuple2
+print(concatenated_tuple)  # Output: (1, 2, 3, 'a', 'b', 'c')
+
+tuple1 = (1, 2, 3)
+tuple2 = ('a', 'b', 'c')
+concatenated_tuple = (*tuple1, *tuple2)
+print(concatenated_tuple)  # Output: (1, 2, 3, 'a', 'b', 'c')
+
+tuple1 = (1, 2, 3)
+tuple2 = ('a', 'b', 'c')
+concatenated_tuple = tuple1 + (*tuple2,)
+print(concatenated_tuple)  # Output: (1, 2, 3, 'a', 'b', 'c')
+
+Q37- Difference Between Python Arrays and Lists
+In Python, lists and arrays are both used to store collections of elements, 
+Arrays in Python are not built-in data structures like lists. They are provided by the array module in the standard library.
+Arrays store elements of a single data type, such as integers or floats. All elements must be of the same type.
+Arrays are more memory-efficient than lists for storing large amounts of data of the same type.
+Arrays are mutable, meaning you can modify their elements.
+Arrays support efficient random access to elements using indices.
+
+
+import array
+int_array = array.array('i', [1, 2, 3])
+float_array = array.array('d', [1.5, 2.5, 3.5])
+
+Lists:
+Lists are built-in data structures in Python and are more versatile than arrays.
+Lists can store elements of different data types, including integers, floats, strings, and even other lists.
+Lists are less memory-efficient than arrays for large amounts of data of the same type.
+Lists are mutable, and you can add, remove, or modify elements.
+Lists also support random access to elements using indices.
+
+my_list = [1, 2, 'hello', True]
+
+Q38 - Difference Between a, __a, __a_ in python?
+
+In Python, variables starting with a single underscore _ are considered "private," meaning they are intended for internal use and should not be accessed directly from outside the class or module.
+Variables starting with a double underscore __ (name mangling) are "strongly private," meaning their names are mangled to include the class name to prevent accidental access from outside the class.
+Variables with both leading and trailing double underscores __var__ are typically special variables or methods defined by Python (e.g., __init__, __repr__).
+
+ a: In Python, a is a valid variable name. It follows the naming convention of using lowercase
+ letters and underscores to separate words (snake_case).
+ a can be used to store any value, such as a number, string, or object.
+ a = 10
+print(a)  # Output: 10
+
+__a: In Python, identifiers that start and end with double underscores (like __a) are 
+reserved for special use in classes and have a specific meaning. They are called 
+"name mangling" and are used to avoid naming conflicts between class attributes and methods.
+ When you use __a as an attribute name, it is mangled to _ClassName__a, where ClassName is the name of the class.
+
+class MyClass:
+    def __init__(self):
+        self.__a = 10
+
+obj = MyClass()
+print(obj._MyClass__a)  # Output: 10
+
+__a_: This identifier follows the naming convention of using double underscores 
+followed by lowercase letters. It is also considered a name mangling, but it is less commonly used.
+ When you use __a_ as an attribute name, it is mangled to _ClassName__a_.
+
+ class MyClass:
+    def __init__(self):
+        self.__a_ = 20
+
+obj = MyClass()
+print(obj._MyClass__a_)  # Output: 20
+
+
+
+Q39- How to read multiple value from single input? --- By Split()
+
+You can read multiple values from a single input by using the split() method
+to split the input string into substrings based on a delimiter (e.g., space, comma)
+and then converting each substring to the desired data type if needed.
+
+values = input("Enter multiple values separated by space: ").split()
+# Convert values to integers
+values = [int(x) for x in values]
+
+and then converting each substring to the desired data type if needed.
+Q40 - How to copy and delete a dictionary
+
+copy() method or by creating a new dictionary with the same key-value pairs.
+
+original_dict = {'name': 'Alice', 'age': 25}
+copied_dict = original_dict.copy()
+# or
+copied_dict = {'name': original_dict['name'], 'age': original_dict['age']}
+
+Deleting a Dictionary: 
+You can delete a dictionary using the del keyword or by clearing its contents using the clear() method.
+my_dict = {'a': 1, 'b': 2}
+del my_dict  # Deletes the entire dictionary
+my_dict.clear()  # Removes all key-value pairs from the dictionary
+
+
+Q41- Difference Between Anonymous and Lambda Function
+Anonymous Function: An anonymous function is a function that is not bound to a name.
+In Python, anonymous functions are created using the lambda keyword. They are also known as lambda functions or lambda expressions.
+Lambda functions are concise and can be defined and used inline without a separate function definition.
+
+double = lambda x: x * 2
+print(double(5))  # Output: 10
+
+Lambda Function: A lambda function is a special type of anonymous function that can take parameters and return a value.
+It has a concise syntax and is often used for simple functions that don't require a separate function definition.
+
+add = lambda x, y: x + y
+print(add(3, 4))  # Output: 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
