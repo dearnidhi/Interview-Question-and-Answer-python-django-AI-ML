@@ -1,0 +1,110 @@
+db.getCollection('ExceptionReport').find({"interface" : "ITEM_INTERFACE"}).sort({"date_time":-1})
+db.getCollection('LoginFailledTracking').find({"EmpId" : "7010014",})
+db.getCollection('OrdersMaster').find({"OrderNo" : "114-0003"}).sort({"date_time":-1})
+db.getCollection('pmr_offer_term_product').find({"offer_productcategoryid" : "GAUTAMPT-26.1","deal_id" : "0000001448"})
+
+db.getCollection('osditnd').distinct("tndtyp")
+db.getCollection('cashierCollection').find({    "empid" : "7065163",    "status" : "In",}).sort({"date_time":-1})
+db.getCollection('StoreUserMapping').distinct("store",{"empno" : "7069980",})
+db.getCollection('ExceptionReport').find({    "interface" : "PROMO_INTERFACE"
+}).sort({"date_time":-1})
+db.getCollection('OrdersMaster').distinct("store",{"storeid" : "8002"
+})
+db.getCollection('OrdersMaster').find({"StoreDetails.deviceID":"98201009991259"
+}).sort({"date_time":-1})
+db.getCollection('OrdersMaster').find({"StoreDetails.deviceID":"98220322980679","StoreDetails.storeid": "8520",
+}).sort({"date_time":-1})
+db.getCollection('ExceptionReport').find({"db_key" : /8043/,
+})
+db.getCollection('StoreUserMapping').find({    "empno" : "7068075",
+}).toArray()
+db.getCollection('OrdersMaster').find({}, { "StoreDetails.storeid": 1 })
+db.getCollection('OrdersMaster').find({ "StoreDetails.storeid": "259" })
+db.getCollection('OrdersMaster').find({ "StoreDetails.storeid": "259" }).sort({ "BusinessDate": -1 })
+db.getCollection('pmr_offer_header').find({"deal_id": "23173",    "correlationid" : "63932cf4215311ee9f8d0000003ae13f"
+
+})
+
+db.getCollection('pmr_offer_term').find({    "deal_id" : "23173","correlationid" : "63932cf4215311ee9f8d0000003ae13f",    "term_internal_id" : "F9C60D18F5321EDE8896CFA900DA1715",
+
+
+})
+
+TERM INTERANAL ID AND CORRECLATION ID pmr_offer_term_product
+
+
+db.getCollection('item_sku').aggregate(
+                        [
+                                { $match: { $or: [
+                                        {"idept": "EB01C009D0119"},
+                                        {"isdept": "EB01C009D0119"},
+                                        {"iclas": "EB01C009D0119"},
+                                        {"isclas": "EB01C009D0119"},
+                                        { "istyln" :"EB01C009D0119"}
+                                ] } },
+                                {
+                                $project: {
+                                        "_id": 0,
+                                        "inumbr": 1,
+                                      "iseasn" : 1,
+                                }
+                                }
+                        ]
+                ).toArray()
+
+OFFERarticleID UTHATE H pmr_offer_term_product
+db.getCollection('pmr_offer_term_product').distinct("oldarticlenumber", {"deal_id": "22288"})
+
+
+
+
+
+
+
+db.getCollection('osditnd').find({ "sdicod" : "DP", }).sort({"created_at":-1})
+
+db.getCollection('osdirsn').find({"rscode" : "009132",}).sort({"created_at":-1})
+
+
+
+db.getCollection('OrdersMaster').find({  "BusinessDate" : ISODate("2021-12-22T00:00:00.000Z"),  "PaymentDetails":{"$elemMatch": {"TenderName" : "CASH"}}        
+  
+}).count({})
+
+
+db.getCollection('OrdersMaster').find({  "BusinessDate" : ISODate("2021-12-22T00:00:00.000Z"), "StoreDetails.storeid":"114", "PaymentDetails":{"$elemMatch": {"TenderName" : "CASH"}}        
+  
+}).count({})
+
+
+
+db.getCollection('osdirsn').find({"rscode" : "8884"}).sort({"created_at":-1})
+
+
+
+count how may store are there
+db.getCollection('StoreMaster').aggregate([
+  {
+    $group: {
+      _id: null,
+      uniqueRetailStoreIDs: { $addToSet: "$RetailStoreID" }
+    }
+  },
+  {
+    $project: {
+      _id: 0,
+      count: { $size: "$uniqueRetailStoreIDs" }
+    }
+  }
+])
+
+
+db.getCollection('item_tcd').find({  "taxcat" : "62046290",    "storeid" : "174",    "taxdsc" : "UGST 6%",}).sort({"date":-1})
+
+db.getCollection('item_tcd').find({  "taxcat" : "62046290",    "storeid" : "174",    "taxdsc" : "CGST 6%",}).sort({"date":-1})
+
+
+
+
+
+
